@@ -70,4 +70,4 @@ This will return you to the global Python environment.
 - Always ensure that your virtual environment is active before installing or running any dependencies specific to your project.
 - If you encounter issues with TensorFlow and Python 3.12, consider downgrading to Python 3.11 for better stability and compatibility.
 - You must install older version of TensorFlow. Neutron-converter script is written for TensorFlow 2.10, but is also working with TensorFlow 2.12 which is in requirements.txt.
-- Neutron-converter script provided in "cifar10_nn/" has to be used with MCU SDK 2.13.1. Other versions of neutron-converter are provided in eiQ-Toolkit (this one is taken from eiQ-Toolkit 1.13.1).
+- Neutron-converter script provided in "tools/" has to be used with MCU SDK 2.16.000. Other versions of neutron-converter are provided in eiQ-Toolkit (this one is taken from eiQ-Toolkit 1.13.1).
