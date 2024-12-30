@@ -61,6 +61,5 @@ test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2)
 print(test_acc)
 
 # Save the trained model
-model.save('models/cifar10_cnn_tf_model')
-tf.saved_model.save(model, 'models/cifar10_cnn_tf_model')
-# keras.saving.save_model(model, 'cifar10_cnn_model.keras')
+model.save('./models/cifar10_cnn_tf_model.h5')
+tf.saved_model.save(model, './models/cifar10_cnn_tf_model')
