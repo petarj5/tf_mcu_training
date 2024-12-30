@@ -1,1 +1,2 @@
-.tf_virt_env
+.tf_virt_env/
+models/

@@ -5,7 +5,7 @@ import numpy as np
 (train_images, train_labels), (test_images, test_labels) = tf.keras.datasets.cifar10.load_data()
 
 # Load the quantized .tflite model
-interpreter = tf.lite.Interpreter(model_path='./models/cifar10_cnn_tflite_model_neutron.tflite')
+interpreter = tf.lite.Interpreter(model_path='./models/cifar10_cnn_tflite_model_quantized.tflite')
 interpreter.allocate_tensors()
 
 # Get input and output details

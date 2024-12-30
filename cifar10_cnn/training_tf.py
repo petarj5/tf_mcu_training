@@ -1,12 +1,22 @@
 
+import argparse
 import tensorflow as tf
 import matplotlib.pyplot as plt
 from tensorflow.keras import datasets, layers, models
 
 ####### CONFIG VARIABLES ########
-CONFIG_plotPartialDatasetImages = False 
+CONFIG_plotPartialDatasetImages = False
 ####### END CONFIG VARIABLES ########
 
+# Config argument parser
+parser = argparse.ArgumentParser(prog='python training_tf.py', usage='%(prog)s [options]')
+parser.add_argument('-e', '--epochs', type=int, default=1, required=False,
+                    help='Number of training epochs', dest='number_of_epochs')
+args = parser.parse_args()
+
+number_of_epochs = args.number_of_epochs
+
+# Load data
 (train_images, train_labels), (test_images, test_labels) = datasets.cifar10.load_data()
 
 # Normalize pixel values to be between 0 and 1
@@ -24,8 +34,6 @@ if(CONFIG_plotPartialDatasetImages):
         plt.yticks([])
         plt.grid(False)
         plt.imshow(train_images[i])
-        # The CIFAR labels happen to be arrays, 
-        # which is why you need the extra index
         plt.xlabel(class_names[train_labels[i][0]])
     plt.show()
 
@@ -46,15 +54,8 @@ model.compile(optimizer='adam',
               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
 
-history = model.fit(train_images, train_labels, epochs=1, 
+history = model.fit(train_images, train_labels, epochs=number_of_epochs, 
                     validation_data=(test_images, test_labels))
-
-plt.plot(history.history['accuracy'], label='accuracy')
-plt.plot(history.history['val_accuracy'], label = 'val_accuracy')
-plt.xlabel('Epoch')
-plt.ylabel('Accuracy')
-plt.ylim([0.5, 1])
-plt.legend(loc='lower right')
 
 test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2)
 
